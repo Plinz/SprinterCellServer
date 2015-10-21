@@ -7,11 +7,12 @@ public class Task {
 	private String title;
 	private int id, value;
 	private String description;
-
+	private ArrayList<Member> members;
 	
-	public Task(int id, String title, String description, int value) {
+	public Task(int id, String title, ArrayList<Member> members,String description, int value) {
 		this.id = id;
 		this.title = title;
+		this.members = members;
 		this.description = description;
 		this.value = value;
 	}
@@ -21,11 +22,21 @@ public class Task {
 
 
 	
-	public void addUser(Membre member){
+	public ArrayList<Member> getMembers() {
+		return members;
+	}
+	
+
+	public void setMembers(ArrayList<Member> members) {
+		this.members = members;
+	}
+	
+
+	public void addUser(Member member){
 		
 	}
 
-	public void removeUser(Membre member){
+	public void removeUser(Member member){
 		
 	}
 
@@ -67,20 +78,6 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
-	public Project getProject() {
-		return project;
-	}
-
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-	
-	
-	
-	
 	
 	
 }
