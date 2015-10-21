@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import BDD.Base;
 
 public class Member {
-
+	private Integer id;
 	private String mdp;
 	private String email;
 	private ArrayList<Project> projets = new ArrayList<Project>();
@@ -13,6 +13,7 @@ public class Member {
 	private String pseudo;
 
 	public Member(String pseudo) {
+		id = 0;
 		this.pseudo = pseudo;
 		mdp = bdd.getMdp(pseudo);
 		email = bdd.getMail(pseudo);
@@ -31,7 +32,12 @@ public class Member {
 				+ "\nprojets :" + projets;
 		return print;
 	}
-
+	public void setId(Integer id){
+		this.id = id;
+	}
+	public Integer getId(){
+		return id;
+	}
 	public ArrayList<Project> getProjets() {
 		return projets;
 	}

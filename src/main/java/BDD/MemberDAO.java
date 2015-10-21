@@ -13,11 +13,11 @@ import rest.Member;
 public interface MemberDAO {
 
 	@SqlUpdate("create members tasks (idm integer primary key autoincrement, mdp varchar(30), email varchar(50), projects text, pseudo varchar(50))")
-	public void createMember();
+	public void createMemberTable();
 	
 	@SqlUpdate("insert into tasks (mdp, email, projects, pseudo)")
 	@GetGeneratedKeys
-	public int insert(@BindBean Member m);
+	public int insert(@BindBean Integer id);
 	
 	@SqlUpdate("update tasks set mdp = :mdp, email = :email, projects = :projects, pseudo = :pseudo")
 	public void update(@BindBean Member m);
