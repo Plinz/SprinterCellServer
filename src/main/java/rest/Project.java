@@ -47,43 +47,66 @@ public class Project {
 		bdd.createProject(this.id, this.name, this.member.getPseudo());
 	}
 	
-	public void addSourceFile (SourceFile src){
-		this.sources.add(src);
+	public void addTask (Task task){
+		this.tasks.add(task);
 	}
 	
-	public void addSourceFile (Collection<? extends SourceFile> src){
-		this.sources.addAll(src);
+	public void addTasks (Collection<? extends Task> tasks){
+		this.tasks.addAll(tasks);
 	}
 	
-	public ArrayList<SourceFile> getSourceFile (){
-		return this.sources;
+	public void removeTask(Task task){
+		this.tasks.remove(task);
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public ArrayList<Task> getTasks() {
+		return tasks;
+	}
+
+
+	public void setTasks(ArrayList<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public ArrayList<Member> getMembers() {
+		return members;
+	}
+
+
+	public void setMembers(ArrayList<Member> members) {
+		this.members = members;
 	}
 	
-	public void removeSourceFile(SourceFile src){
-		this.sources.remove(src);
-	}
-	
-	public void setName(String name){
-		this.name=name;
-	}
-	
-	public String getName(){
-		return this.name;
-	}
-	
-	public void setOwner(Membre owner){
-		this.owner=owner;
-	}
-	
-	public Membre getOwner(){
-		return this.owner;
-	}
-	
-	public int getId(){
-		return this.id;
-	}
-	
-	public void setId(int id){
-		this.id=id;
-	}
 }
