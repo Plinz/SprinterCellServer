@@ -24,18 +24,15 @@ import javax.ws.rs.core.Response.Status;
 @Path("/projet")
 @Produces(MediaType.APPLICATION_JSON)
 public class ProjectRessource {
-	private static Map<Integer, Project> projets = new HashMap<>();
-	static {
-		projets.put(new Integer(1), new Project("projet",null,5));
-	}
+	private static Map<Integer, Project> projets = new HashMap<Integer, Project>();
 
 	@POST
 	@Path("/{pseudo}")
 	public Project createProject(@PathParam("pseudo") String pseudo, Project projet) {
 		int id = projets.size();
-		Membre owner = new Membre(pseudo);
+		Member member = new Member(pseudo);
 		projet.setId(id + 1);
-		projet.setOwner(owner);
+		projet.addMember(member);
 		projets.put(projet.getId(), projet);
 		projet.putBDD();
 		return projet;

@@ -3,28 +3,24 @@ package rest;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import BDD.Base;
-
 public class Project {
 	private String name;
 	private String description;
 	private ArrayList<Task> tasks;
 	private int id;
 	private ArrayList<Member> members;
-	private Base bdd;
 	
 	public Project(){
 	}
 	
 	public Project(String name, String description, ArrayList<Task> tasks,
-			int id, ArrayList<Member> members, Base bdd) {
+			int id, ArrayList<Member> members) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.tasks = tasks;
 		this.id = id;
 		this.members = members;
-		this.bdd = bdd;
 	}
 
 
@@ -32,7 +28,6 @@ public class Project {
 	public Project(Integer idProject) {
 		this.id = idProject;
 		this.tasks = new ArrayList<Task>();
-		this.bdd = new Base();
 		this.name = bdd.getProjectName(idProject);
 		this.members = bdd.getProjectMembers(idProject);
 		ArrayList<Integer> tmp = bdd.getProjectTasks(idProject);
@@ -48,6 +43,10 @@ public class Project {
 	
 	public void addTask (Task task){
 		this.tasks.add(task);
+	}
+	
+	public void addMember(Member m){
+		this.members.add(m);
 	}
 	
 	public void addTasks (Collection<? extends Task> tasks){
