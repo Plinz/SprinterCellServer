@@ -1,5 +1,7 @@
 package BDD;
 
+import java.util.List;
+
 import rest.Task;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
@@ -12,12 +14,13 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface TaskDao {
 	
+	
 	@SqlUpdate("create table tasks (idt integer primary key autoincrement, namet varchar(20), description varchar(100), state varchar(20))")
-	public void createTask();
+	public void createTaskTable();
 	
 	@SqlUpdate("insert into tasks (namet, description, state)")
 	@GetGeneratedKeys
-	public int insert(@BindBean Task t);
+	public int insert(@BindBean int id);
 	
 	@SqlUpdate("update tasks set namet = :namet, description = :description, state = :state")
 	public void update(@BindBean Task t);
@@ -34,6 +37,11 @@ public interface TaskDao {
 	
 	@SqlUpdate("drop table if exists tasks")
 	public void dropClientTask();
+	
+	@SqlQuery("select * from users order by idt")
+	@RegisterMapperFactory(BeanMapperFactory.class)
+	List<Task> all();
+	
 
 	public void close();
 	
