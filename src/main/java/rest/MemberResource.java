@@ -1,5 +1,5 @@
+package rest;
 
-package fr.iutinfo.api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

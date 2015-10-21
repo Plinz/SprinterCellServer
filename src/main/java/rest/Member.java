@@ -2,34 +2,29 @@ package rest;
 
 import java.util.ArrayList;
 
-import BDD.Base;
+import BDD.App;
+import BDD.MemberDAO;
 
 public class Member {
 	private Integer id;
 	private String mdp;
 	private String email;
-	private ArrayList<Project> projets = new ArrayList<Project>();
-	private Base bdd = new Base();
 	private String pseudo;
-
+	private static MemberDAO dao ;
+	static {
+		dao = App.getDbi().open(MemberDAO.class);
+	}
 	public Member(String pseudo) {
-		id = 0;
 		this.pseudo = pseudo;
-		mdp = bdd.getMdp(pseudo);
-		email = bdd.getMail(pseudo);
-		ArrayList<Integer> projets = bdd.getProject(pseudo);
-		for (int i = 0; i < projets.size(); i++) {
-			this.projets.add(new Project(projets.get(i)));
-		}
 	}
 
-		public Member() {
-		}
+	public Member() {
+	}
 
 	public String toString() {
 		String print;
 		print = " user :" + pseudo + "\nmdp :" + mdp + "\nemail :" + email
-				+ "\nprojets :" + projets;
+				+ "\nprojets :" +getProjets();
 		return print;
 	}
 	public void setId(Integer id){
@@ -39,7 +34,7 @@ public class Member {
 		return id;
 	}
 	public ArrayList<Project> getProjets() {
-		return projets;
+		return dao.getProjects(id);
 	}
 
 	public String getPseudo() {
@@ -66,15 +61,5 @@ public class Member {
 		this.email = email;
 	}
 
-	public Base getBdd() {
-		return bdd;
-	}
 
-	public void setBdd(Base bdd) {
-		this.bdd = bdd;
-	}
-
-	public void setProjets(ArrayList<Project> projets) {
-		this.projets = projets;
-	}
 }
