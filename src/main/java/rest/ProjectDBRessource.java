@@ -41,9 +41,8 @@ public class ProjectDBRessource {
 	
 	@POST
 	@Path("/{pseudo}")
-	public Project createProject(@PathParam("pseudo") String pseudo, Project project) {
-		
-		new Project();
+	public Project createProject(@PathParam("pseudo") String pseudo,) {
+		new Project(pseudo);
 		project.setId(id + 1);
 		project.addMember(member);
 		projects.put(project.getId(), project);

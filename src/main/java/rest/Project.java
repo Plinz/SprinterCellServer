@@ -1,6 +1,7 @@
 package rest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import BDD.App;
 import BDD.ProjectDAO;
@@ -21,7 +22,6 @@ public class Project {
 	public Project(String name, String description) {
 		this.name = name;
 		this.description = description;
-		this.daoProject
 	}
 	
 	public void addMember(Member m){
@@ -61,8 +61,8 @@ public class Project {
 	}
 
 
-	public ArrayList<Task> getTasks() {
-		return tasks;
+	public List<Member> getTasks() {
+		return this.daoProject.findTasksByIdp(this.id);
 	}
 
 	public int getId() {
@@ -75,9 +75,8 @@ public class Project {
 	}
 
 
-	public ArrayList<Member> getMembers() {
-		this.daoProjecttoMember
-		return members;
+	public List<Member> getMembers() {
+		return this.daoProject.findMembersByIdp(this.id);
 	}
 
 	
