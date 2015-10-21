@@ -4,81 +4,82 @@ import java.util.ArrayList;
 
 
 public class Task {
-	private String name;
-	private int id = 0;
-	private String codesource;
-	private ArrayList<String> keyWords;
-	private String formatedSource;
-	private Project projet;
+	private String title;
+	private int id, value;
+	private String description;
 
-	public Project getProjet() {
-		return projet;
-	}
-	public void setProjet(Project projet) {
-		this.projet = projet;
-	}
-	public void setKeyWords(ArrayList<String> keyWords) {
-		this.keyWords = keyWords;
-	}
-	public SourceFile(int id, String name, Project p) {
+	
+	public Task(int id, String title, String description, int value) {
 		this.id = id;
-		this.name = name;
-		this.codesource = "";
-		this.formatedSource = "";
-		this.keyWords = new ArrayList<String>();
-		this.projet = p;
-	}
-	public SourceFile(Integer idSourceFile){
-		Base b = new Base();
-		name = b.getSourceFileName(idSourceFile);
-		codesource = b.getSourceFileName(idSourceFile);
-		this.keyWords = new ArrayList<String>();
-		
-	}
-	public SourceFile(){
-		
-	}
-	
-	public String getCodesource() {
-		return codesource;
+		this.title = title;
+		this.description = description;
+		this.value = value;
 	}
 
-	public void setCodesource(String source) {
-		this.codesource = source;
-	}
+
 	
-	public String getFormatedSource() {
-		return formatedSource;
+
+
+	
+	public void addUser(Membre member){
+		
 	}
 
-	public void setFormatedSource(String formatedSource) {
-		this.formatedSource = formatedSource;
+	public void removeUser(Membre member){
+		
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+
+	public int getValue() {
+		return value;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-	public String toString() {
-		return id + ": " + name + ": " + codesource;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public String[] getKeyWords(){
-		updateKeyWords();
-		return (String[])keyWords.toArray();
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
+
+	public Project getProject() {
+		return project;
+	}
+
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
+	
+	
 	
 	
 	
