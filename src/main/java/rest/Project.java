@@ -3,51 +3,48 @@ package rest;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import fr.developeverywhere.gestionbdd.Base;
+import BDD.Base;
 
 public class Project {
 	private String name;
-	private ArrayList<Taches> sources;
+	private String description;
+	private ArrayList<Task> tasks;
 	private int id;
-	private Membre owner;
+	private ArrayList<Member> members;
+	private Base bdd;
 	
 	public Project(){
 	}
 	
-	public Project (String name, Membre owner, int id){
-		this.name = name;
-		this.owner = owner;
-		this.id = id;
-		this.sources = new ArrayList<SourceFile>();
-	}
 	
+	public Project(String name, String description, ArrayList<Task> tasks,
+			int id, ArrayList<Member> members, Base bdd) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.tasks = tasks;
+		this.id = id;
+		this.members = members;
+		this.bdd = bdd;
+	}
+
+
+
 	public Project(Integer idProject) {
 		this.id = idProject;
-		this.sources = new ArrayList<SourceFile>();
-		Base b = new Base();
-		this.name = b.getProjectName(idProject);
-		this.owner = b.getProjectOwner(idProject);
-		ArrayList<Integer> tmp = b.getSourceFilesFromProject(idProject);
+		this.tasks = new ArrayList<Task>();
+		this.bdd = new Base();
+		this.name = bdd.getProjectName(idProject);
+		this.members = bdd.getProjectMembers(idProject);
+		ArrayList<Integer> tmp = bdd.getProjectTasks(idProject);
 		for(int i = 0; i<tmp.size(); i++){
-			sources.add(new SourceFile(tmp.get(i)));
-		}
-	}
-	
-	public Project(Integer idProject, Membre owner){
-		this.id = idProject;
-		this.sources = new ArrayList<SourceFile>();
-		Base b = new Base();
-		this.name = b.getProjectName(idProject);
-		this.owner = owner;
-		ArrayList<Integer> tmp = b.getSourceFilesFromProject(idProject);
-		for(int i = 0; i<tmp.size(); i++){
-			sources.add(new SourceFile(tmp.get(i)));
+			this.tasks.add(new Task(tmp.get(i)));
 		}
 	}
 	
 	public void putBDD(){
-		Base b = new Base();
-		b.createProject(this.id, this.name, this.owner.getPseudo());
+		this.bdd = new Base();
+		bdd.createProject(this.id, this.name, this.member.getPseudo());
 	}
 	
 	public void addSourceFile (SourceFile src){
