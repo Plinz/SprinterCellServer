@@ -18,7 +18,7 @@ public class Member {
 		email = bdd.getMail(pseudo);
 		ArrayList<Integer> projets = bdd.getProject(pseudo);
 		for (int i = 0; i < projets.size(); i++) {
-			this.projets.add(new Project(projets.get(i), this));
+			this.projets.add(new Project(projets.get(i)));
 		}
 	}
 

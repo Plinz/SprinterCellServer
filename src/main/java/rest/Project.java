@@ -16,7 +16,6 @@ public class Project {
 	public Project(){
 	}
 	
-	
 	public Project(String name, String description, ArrayList<Task> tasks,
 			int id, ArrayList<Member> members, Base bdd) {
 		super();
@@ -44,7 +43,7 @@ public class Project {
 	
 	public void putBDD(){
 		this.bdd = new Base();
-		bdd.createProject(this.id, this.name, this.members.getPseudo());
+		bdd.createProject(this.id, this.name, this.tasks, this.description, this.members);
 	}
 	
 	public void addTask (Task task){
