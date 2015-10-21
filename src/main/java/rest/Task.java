@@ -2,12 +2,19 @@ package rest;
 
 import java.util.ArrayList;
 
+import BDD.App;
+import BDD.TaskDao;
+
 
 public class Task {
 	private String title;
 	private int id, value;
 	private String description;
 	private ArrayList<Member> members;
+	private static TaskDao dao ;
+	static {
+		dao = App.getDbi().open(TaskDao.class);
+	}
 	
 	public Task(int id, String title, ArrayList<Member> members,String description, int value) {
 		this.id = id;
