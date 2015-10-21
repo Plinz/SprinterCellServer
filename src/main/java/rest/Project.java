@@ -1,60 +1,43 @@
 package rest;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
+import BDD.App;
+import BDD.ProjectDAO;
+import BDD.ProjectToMemberDao;
+import BDD.ProjectToTaskDao;
 
 public class Project {
 	private String name;
 	private String description;
-	private ArrayList<Task> tasks;
 	private int id;
-	private ArrayList<Member> members;
+	private static ProjectToMemberDao daoProjectToMember = App.getDbi().open(ProjectToMemberDao.class);
+	private static ProjectToTaskDao daoProjectToTask = App.getDbi().open(ProjectToTaskDao.class);	
+	private static ProjectDAO daoProject = App.getDbi().open(ProjectDAO.class);
 	
 	public Project(){
 	}
 	
-	public Project(String name, String description, ArrayList<Task> tasks,
-			int id, ArrayList<Member> members) {
-		super();
+	public Project(String name, String description) {
 		this.name = name;
 		this.description = description;
-		this.tasks = tasks;
-		this.id = id;
-		this.members = members;
-	}
-
-
-
-	public Project(Integer idProject) {
-		this.id = idProject;
-		this.tasks = new ArrayList<Task>();
-		this.name = bdd.getProjectName(idProject);
-		this.members = bdd.getProjectMembers(idProject);
-		ArrayList<Integer> tmp = bdd.getProjectTasks(idProject);
-		for(int i = 0; i<tmp.size(); i++){
-			this.tasks.add(new Task(tmp.get(i)));
-		}
-	}
-	
-	public void putBDD(){
-		this.bdd = new Base();
-		bdd.createProject(this.id, this.name, this.tasks, this.description, this.members);
-	}
-	
-	public void addTask (Task task){
-		this.tasks.add(task);
+		this.daoProject
 	}
 	
 	public void addMember(Member m){
-		this.members.add(m);
+		this.daoProjectToMember.insert(this.id, m.getId());
 	}
 	
-	public void addTasks (Collection<? extends Task> tasks){
-		this.tasks.addAll(tasks);
+	public void removeMember (Member m){
+		this.daoProjectToMember.deleteProjectMember(this.id, m.getId());
+	}
+	
+	public void addTask (Task task){
+		this.daoProjectToTask.insert(this.id, task.getId());
 	}
 	
 	public void removeTask(Task task){
-		this.tasks.remove(task);
+		this.daoProjectToTask.deleteProjectTask(this.id, task.getId());
 	}
 
 
@@ -82,12 +65,6 @@ public class Project {
 		return tasks;
 	}
 
-
-	public void setTasks(ArrayList<Task> tasks) {
-		this.tasks = tasks;
-	}
-
-
 	public int getId() {
 		return id;
 	}
@@ -99,12 +76,9 @@ public class Project {
 
 
 	public ArrayList<Member> getMembers() {
+		this.daoProjecttoMember
 		return members;
 	}
 
-
-	public void setMembers(ArrayList<Member> members) {
-		this.members = members;
-	}
 	
 }

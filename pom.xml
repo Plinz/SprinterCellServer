@@ -17,15 +17,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -40,13 +32,13 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.3.0.M1</version>
 				<configuration>
-   						<scanIntervalSeconds>5</scanIntervalSeconds>
-        				<war>${project.basedir}/target/${project.artifactId}.war</war>
-        				<webApp>
-        			    <webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
-        			    <containerIncludeJarPattern>^$</containerIncludeJarPattern>
-          </webApp>
-  				</configuration>
+					<scanIntervalSeconds>5</scanIntervalSeconds>
+					<war>${project.basedir}/target/${project.artifactId}.war</war>
+					<webApp>
+						<webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
+						<containerIncludeJarPattern>^$</containerIncludeJarPattern>
+					</webApp>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

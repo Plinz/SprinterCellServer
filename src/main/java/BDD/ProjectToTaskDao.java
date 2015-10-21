@@ -21,14 +21,6 @@ public interface ProjectToTaskDao {
 	@SqlUpdate("delete from projecttasks where idp = :idp and idt = :idt")
 	public int deleteProjectTask(@Bind("idp") int idp, @Bind("idt") int idt);
 	
-	@SqlQuery("select * from projecttasks where idp = :idp")
-    @RegisterMapperFactory(BeanMapperFactory.class)
-	public Project findByIdp(@Bind("idp") int idp);
-	
-	@SqlQuery("select * from projecttasks where idt = :idt")
-    @RegisterMapperFactory(BeanMapperFactory.class)
-	public Project findByIdt(@Bind("idt") int idt);
-	
 	@SqlUpdate("drop table if exists projecttasks")
 	public void dropProjectTask();
 

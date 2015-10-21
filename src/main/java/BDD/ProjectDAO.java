@@ -13,7 +13,7 @@ import rest.Project;
 public interface ProjectDAO {
 
 	@SqlUpdate("create table projects (idp integer primary key autoincrement, namep varchar(20), descriptionp varchar(100), tasksp text, membersp text)")
-	public void createProject();
+	public void createProjectTable();
 	
 	@SqlUpdate("insert into tasks (namep, descriptionp, tasksp, membersp)")
 	@GetGeneratedKeys

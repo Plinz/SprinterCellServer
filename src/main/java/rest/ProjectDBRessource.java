@@ -1,9 +1,7 @@
 package rest;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -20,28 +18,43 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import BDD.App;
+import BDD.MemberDAO;
+import BDD.ProjectDAO;
 
-@Path("/projet")
+
+@Path("/project")
 @Produces(MediaType.APPLICATION_JSON)
-public class ProjectRessource {
-	private static Map<Integer, Project> projets = new HashMap<Integer, Project>();
+@Consumes(MediaType.APPLICATION_JSON)
+public class ProjectDBRessource {
+	private static ProjectDAO daoProject = App.getDbi().open(ProjectDAO.class);
+	private static MemberDAO daoMember = App.getDbi().open(MemberDAO.class);
 
+	public ProjectDBRessource() {
+		try {
+			daoProject.createProjectTable();
+		} catch (Exception e) {
+			System.out.println("Table déjà là !");
+		}
+	}
+	
+	
 	@POST
 	@Path("/{pseudo}")
-	public Project createProject(@PathParam("pseudo") String pseudo, Project projet) {
-		int id = projets.size();
-		Member member = new Member(pseudo);
-		projet.setId(id + 1);
-		projet.addMember(member);
-		projets.put(projet.getId(), projet);
-		projet.putBDD();
-		return projet;
+	public Project createProject(@PathParam("pseudo") String pseudo, Project project) {
+		
+		new Project();
+		project.setId(id + 1);
+		project.addMember(member);
+		projects.put(project.getId(), project);
+		project.putBDD();
+		return project;
 	}
 	
 	@DELETE
 	@Path("{id}")
 	public Response deleteProject(@PathParam("id") Integer id) {
-		if (projets.containsKey(id)) {
+		if (projects.containsKey(id)) {
 			return Response.accepted().status(Status.ACCEPTED).build();
 		}
 	    return Response.accepted().status(Status.NOT_FOUND).build();
