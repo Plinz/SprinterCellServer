@@ -8,6 +8,8 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
+import rest.Project;
+
 public interface ProjectToMemberDao {
 
 	@SqlUpdate("create table projectmembers (idp integer, idm integer)")
@@ -19,6 +21,14 @@ public interface ProjectToMemberDao {
 	
 	@SqlUpdate("delete from projectmembers where idp = :idp and idm = :idm")
 	public int deleteProjectMember(@Bind("idp") int idp, @Bind("idm") int idm);
+	
+	@SqlQuery("select * from projectmembers where idp = :idp")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	public Project findByIdp(@Bind("idp") int idp);
+	
+	@SqlQuery("select * from projectmembers where idm = :idm")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	public Project findByIdm(@Bind("idm") int idm);
 	
 	@SqlUpdate("drop table if exists projectmembers")
 	public void dropProjectMember();
