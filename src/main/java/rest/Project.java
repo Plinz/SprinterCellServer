@@ -44,7 +44,7 @@ public class Project {
 	
 	public void putBDD(){
 		this.bdd = new Base();
-		bdd.createProject(this.id, this.name, this.member.getPseudo());
+		bdd.createProject(this.id, this.name, this.members.getPseudo());
 	}
 	
 	public void addTask (Task task){
