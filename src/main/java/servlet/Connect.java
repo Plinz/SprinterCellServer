@@ -15,7 +15,7 @@ public class Connect extends HttpServlet {
 
 		HttpSession session = req.getSession(true);
 		if (session.getAttribute("pseudo") != null) {
-			res.sendRedirect("Menu");
+			res.sendRedirect("/servlet/WorkPanel");
 		}
 		out.println("<!DOCTYPE html>");
 		out.println("<html >");
@@ -76,7 +76,7 @@ public class Connect extends HttpServlet {
 		out.println("<div id=\"login\">");
 		out.println("<h1>Welcome Back!</h1>");
 
-		out.println("<form action=\"/LogIn\" method=\"post\">");
+		out.println("<form action=\"/servlet/LogIn\" method=\"post\">");
 
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");

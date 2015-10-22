@@ -24,23 +24,10 @@ public class Register extends HttpServlet {
 		System.out.println(pseudo);
 		HttpSession session = req.getSession(true);
 		if (session.getAttribute("pseudo") != null) {
-			res.sendRedirect("/servlet/Menu");
+			res.sendRedirect("/servlet/WorkPanel");
 		}
 		daoMember.insert(pseudo);
 		daoMember.update(pseudo, req.getParameter("password"), req.getParameter("email"));
 		
-		
-		
-		PrintWriter out = res.getWriter();
-		res.setContentType("text/html");
-		out.println("<!DOCTYPE html>");
-		out.println("<html >");
-		out.println("<head>");
-		out.println("<meta charset=\"UTF-8\">");
-		out.println("</head>");
-		out.println("<body>");
-		out.println(daoMember.all());
-		out.println("</body>");
-		out.println("</html>");
 	}
 }

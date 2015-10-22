@@ -10,7 +10,7 @@ import BDD.MemberDAO;
 
 import java.sql.*;
 
-@WebServlet("/servlet/Login")
+@WebServlet("/servlet/LogIn")
 public class LogIn extends HttpServlet 
 {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -21,19 +21,19 @@ public class LogIn extends HttpServlet
 		HttpSession session = req.getSession(true);
 		String pseudo = req.getParameter("pseudo");
 		if(pseudo == null){
-			res.sendRedirect("/servlet/Menu");
+			res.sendRedirect("/servlet/Connect");
 		}
 
 		MemberDAO m = App.getDbi().open(MemberDAO.class);
 
 		if(m.findByPseudo(pseudo) == null){
-			res.sendRedirect("/servlet/Menu");
+			res.sendRedirect("/servlet/Connect");
 		}
 		else if(m.getMdp(pseudo).equals(req.getParameter("password"))){
 				session.setAttribute("pseudo", pseudo);
 				res.sendRedirect("/servlet/WorkPanel");
 			
 		}
-		res.sendRedirect("/servlet/Menu");
+		res.sendRedirect("/servlet/WorkPanel");
 	}
 }
