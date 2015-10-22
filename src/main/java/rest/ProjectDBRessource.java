@@ -23,7 +23,7 @@ import BDD.MemberDAO;
 import BDD.ProjectDAO;
 
 
-@Path("/project")
+@Path("/projectdb")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ProjectDBRessource {

@@ -9,7 +9,7 @@ import BDD.MemberDAO;
 
 import java.util.List;
 
-@Path("/userdb")
+@Path("/memberdb")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class MemberResource {
@@ -31,8 +31,8 @@ public class MemberResource {
 
 	@GET
 	@Path("/{name}")
-	public Member getUser(@PathParam("id") Integer id) {
-		Member user = dao.findByIdm(id);
+	public Member getUser(@PathParam("pseudo") String pseudo) {
+		Member user = dao.findByPseudo(pseudo);
 		if (user == null) {
 			throw new WebApplicationException(404);
 		}
