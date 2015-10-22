@@ -13,7 +13,7 @@ public class Home extends HttpServlet
     	res.setContentType("text/html");
     	
     	HttpSession session = req.getSession(true);
-    	if(((ServletRequest) session).getParameter("pseudo") == null){
+    	if(session.getAttribute("pseudo") == null){
     		res.sendRedirect("accueil.html");
     	}
     	out.println("<html>");
