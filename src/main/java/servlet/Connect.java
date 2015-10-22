@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.sql.*;
 
-@WebServlet("/servlet/Login")
-public class Login extends HttpServlet {
+@WebServlet("/servlet/Connect")
+public class Connect extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		PrintWriter out = res.getWriter();
@@ -43,36 +43,28 @@ public class Login extends HttpServlet {
 		out.println(" <div id=\"signup\">");
 		out.println("<h1>Sign Up for Free</h1>");
 
-		out.println("<form action=\"/\" method=\"post\">");
+		out.println("<form action=\"/servlet/Register\" method=\"get\">");
 
-		out.println("<div class=\"top-row\">");
+		
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
-		out.println("First Name<span class=\"req\">*</span>");
+		out.println("E-Mail<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println(" <input type=\"text\" required autocomplete=\"off\" />");
-		out.println(" </div>");
-
-		out.println("<div class=\"field-wrap\">");
-		out.println("<label>");
-		out.println("Last Name<span class=\"req\">*</span>");
-		out.println("</label>");
-		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"email\" name=\"email\" required autocomplete=\"off\" />");
 		out.println("</div>");
-		out.println(" </div>");
-
+		
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"text\" name=\"pseudo\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<div class=\"field-wrap\">");
 		out.println(" <label>");
 		out.println("Set A Password<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"password\" required autocomplete=\"off\" />");
+		out.println("<input type=\"password\" name=\"password\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<button type=\"submit\" class=\"button button-block\" />Get Started</button>");
@@ -84,20 +76,20 @@ public class Login extends HttpServlet {
 		out.println("<div id=\"login\">");
 		out.println("<h1>Welcome Back!</h1>");
 
-		out.println("<form action=\"/\" method=\"post\">");
+		out.println("<form action=\"/LogIn\" method=\"post\">");
 
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"text\" name=\"pseudo\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
 		out.println("Password<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"password\" required autocomplete=\"off\" />");
+		out.println("<input type=\"password\" name=\"password\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<p class=\"forgot\"><a href=\"#\">Forgot Password?</a></p>");

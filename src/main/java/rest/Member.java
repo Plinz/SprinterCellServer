@@ -1,8 +1,6 @@
 package rest;
 
-import java.util.ArrayList;
-
-import rest.Project;
+import java.util.List;
 
 import BDD.App;
 import BDD.MemberDAO;
@@ -25,11 +23,11 @@ public class Member {
 	public String toString() {
 		String print;
 		print = " user :" + pseudo + "\nmdp :" + mdp + "\nemail :" + email
-				+ "\nprojets :" +getProjets();
+				+ "\nprojets :";
 		return print;
 	}
 	
-	public ArrayList<Project> getProjets() {
+	public List<Project> getProjets() {
 		return dao.getProjects(pseudo);
 	}
 

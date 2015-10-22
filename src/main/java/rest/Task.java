@@ -1,7 +1,5 @@
 package rest;
 
-import java.util.ArrayList;
-
 import BDD.App;
 import BDD.TaskDao;
 
@@ -12,9 +10,13 @@ public class Task {
 	private String description, state;
 	private static TaskDao dao ;
 	static {
-		setDao(App.getDbi().open(TaskDao.class));
+		dao = App.getDbi().open(TaskDao.class);
 	}
-	
+
+	public Task() {
+		
+	}
+	 
 	public Task(String title, String description, int value) {
 		this.title = title;
 		this.description = description;
@@ -82,9 +84,6 @@ public class Task {
 		return dao;
 	}
 
-	public static void setDao(TaskDao dao) {
-		Task.dao = dao;
-	}
 	
 	
 }

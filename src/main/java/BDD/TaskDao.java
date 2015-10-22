@@ -41,7 +41,7 @@ public interface TaskDao {
 	@SqlUpdate("drop table if exists tasks")
 	public void dropTask();
 	
-	@SqlQuery("select * from users order by idt")
+	@SqlQuery("select * from tasks order by idt")
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	List<Task> all();
 	

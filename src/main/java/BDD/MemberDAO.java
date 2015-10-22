@@ -23,11 +23,15 @@ public interface MemberDAO {
 	@GetGeneratedKeys
 	public int insert(@Bind("pseudo") String pseudo );
 	
-	@SqlUpdate("update members set pseudo = :pseudo, mdp = :mdp, email = :email, projects = :projects")
-	public void update(@BindBean Member m);
+	@SqlUpdate("update members set mdp = :password, email = :email where pseudo = :pseudo")
+	public void update(@Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("email") String email);
+	
 	
 	@SqlQuery("select count(*) from members")
 	public int countM();
+	
+	@SqlQuery("select mdp from members where pseudo = :pseudo")
+	public String getMdp(@Bind("pseudo") String pseudo);
 	
 	@SqlQuery("select * from members where pseudo = :pseudo")
     @RegisterMapperFactory(BeanMapperFactory.class)
