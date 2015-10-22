@@ -43,14 +43,14 @@ public class Connect extends HttpServlet {
 		out.println(" <div id=\"signup\">");
 		out.println("<h1>Sign Up for Free</h1>");
 
-		out.println("<form action=\"/Register\" method=\"post\">");
+		out.println("<form action=\"/servlet/Register\" method=\"get\">");
 
 		out.println("<div class=\"top-row\">");
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
 		out.println("First Name<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println(" <input type=\"text\" required autocomplete=\"off\" />");
+		out.println(" <input type=\"text\" name=\"pseudo\" required autocomplete=\"off\" />");
 		out.println(" </div>");
 
 		out.println("<div class=\"field-wrap\">");
