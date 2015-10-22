@@ -64,7 +64,7 @@ public class Connect extends HttpServlet {
 		out.println(" <label>");
 		out.println("Set A Password<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"password\" required autocomplete=\"off\" />");
+		out.println("<input type=\"password\" name=\"password\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<button type=\"submit\" class=\"button button-block\" />Get Started</button>");
@@ -89,7 +89,7 @@ public class Connect extends HttpServlet {
 		out.println("<label>");
 		out.println("Password<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"password\" required autocomplete=\"off\" />");
+		out.println("<input type=\"password\" name=\"password\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<p class=\"forgot\"><a href=\"#\">Forgot Password?</a></p>");
