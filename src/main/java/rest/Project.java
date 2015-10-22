@@ -30,11 +30,11 @@ public class Project {
 	}
 	
 	public void addMember(Member m){
-		this.daoProjectToMember.insert(this.id, m.getId());
+		this.daoProjectToMember.insert(this.id, m.getPseudo());
 	}
 	
 	public void removeMember (Member m){
-		this.daoProjectToMember.deleteProjectMember(this.id, m.getId());
+		this.daoProjectToMember.deleteProjectMember(this.id, m.getPseudo());
 	}
 	
 	public void addTask (Task task){

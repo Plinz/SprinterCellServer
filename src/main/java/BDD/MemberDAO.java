@@ -16,34 +16,34 @@ import rest.Member;
 
 public interface MemberDAO {
 
-	@SqlUpdate("create members (idm integer primary key autoincrement, mdp varchar(30), email varchar(50), projects text, pseudo varchar(50))")
+	@SqlUpdate("create members (pseudo varchar(50) primary key, mdp varchar(30), email varchar(50), projects text)")
 	public void createMemberTable();
 	
-	@SqlUpdate("insert into members (mdp, email, projects, pseudo)")
+	@SqlUpdate("insert into members (pseudo, mdp, email, projects)")
 	@GetGeneratedKeys
 	public int insert(@BindBean String pseudo);
 	
-	@SqlUpdate("update members set mdp = :mdp, email = :email, projects = :projects, pseudo = :pseudo")
+	@SqlUpdate("update members set pseudo = :pseudo, mdp = :mdp, email = :email, projects = :projects")
 	public void update(@BindBean Member m);
 	
 	@SqlQuery("select count(*) from members")
 	public int countM();
 	
-	@SqlQuery("select * from members where idm = :idm")
+	@SqlQuery("select * from members where pseudo = :pseudo")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	public Member findByIdm(@Bind("idm") int idm);
+	public Member findByPseudo(@Bind("pseudo") String pseudo);
 	
 	@SqlQuery("select * from projects, projectmembers  where pseudo = :pseudo and projects.idp = projectmembers.idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	public ArrayList<rest.Project> getProjects(@Bind("idm") String pseudo);
 	
-	@SqlUpdate("delete from members where idm = :idm")
-	public int deleteMember(@Bind("idm") int idm);
+	@SqlUpdate("delete from members where pseudo = :pseudo")
+	public int deleteMember(@Bind("pseudo") String pseudo);
 	
 	@SqlUpdate("drop table if exists members")
 	public void dropMember();
 	
-	@SqlQuery("select * from members order by id")
+	@SqlQuery("select * from members order by pseudo")
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	List<Member> all();
 	

@@ -43,6 +43,7 @@ public class ProjectDBRessource {
 	@Path("/{pseudo}")
 	public Project createProject(@PathParam("pseudo") String pseudo, Project project) {
 		project.addMember(this.daoMember.findByPseudo(pseudo));
+		this.daoProject.insert(project);
 		return project;
 	}
 	
