@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
 		out.println(" <title>Sign-Up/Login Form</title>");
 		out.println("<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>");
 
-		out.println(" <link rel=\"stylesheet\" href=\"/css/normalize.css\">");
+		out.println("<link rel=\"stylesheet\" href=\"/css/normalize.css\">");
 
 		out.println("<link rel=\"stylesheet\" href=\"/css/style.css\">");
 
@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
 		out.println("<div class=\"top-row\">");
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
-		out.println(" First Name<span class=\"req\">*</span>");
+		out.println("First Name<span class=\"req\">*</span>");
 		out.println("</label>");
 		out.println(" <input type=\"text\" required autocomplete=\"off\" />");
 		out.println(" </div>");
@@ -65,39 +65,39 @@ public class Login extends HttpServlet {
 		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("  <input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"text\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<div class=\"field-wrap\">");
 		out.println(" <label>");
 		out.println("Set A Password<span class=\"req\">*</span>");
-		out.println("          </label>");
-		out.println("          <input type=\"password\" required autocomplete=\"off\" />");
+		out.println("</label>");
+		out.println("<input type=\"password\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
-		out.println("        <button type=\"submit\" class=\"button button-block\" />Get Started</button>");
+		out.println("<button type=\"submit\" class=\"button button-block\" />Get Started</button>");
 
-		out.println("      </form>");
+		out.println("</form>");
 
-		out.println("    </div>");
+		out.println("</div>");
 
-		out.println("    <div id=\"login\">");
-		out.println("      <h1>Welcome Back!</h1>");
+		out.println("<div id=\"login\">");
+		out.println("<h1>Welcome Back!</h1>");
 
 		out.println("<form action=\"/\" method=\"post\">");
 
-		out.println("        <div class=\"field-wrap\">");
-		out.println("          <label>");
+		out.println("<div class=\"field-wrap\">");
+		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("          <input type=\"text\" required autocomplete=\"off\" />");
-		out.println("        </div>");
+		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("</div>");
 
-		out.println("        <div class=\"field-wrap\">");
+		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
-		out.println("            Password<span class=\"req\">*</span>");
+		out.println("Password<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("          <input type=\"password\" required autocomplete=\"off\" />");
+		out.println("<input type=\"password\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<p class=\"forgot\"><a href=\"#\">Forgot Password?</a></p>");
@@ -106,18 +106,18 @@ public class Login extends HttpServlet {
 
 		out.println("</form>");
 
-		out.println("    </div>");
+		out.println("</div>");
 
-		out.println("  </div>");
-		out.println("  <!-- tab-content -->");
+		out.println("</div>");
+		out.println("<!-- tab-content -->");
 
 		out.println("</div>");
 		out.println("<!-- /form -->");
-		out.println("    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>");
+		out.println("<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>");
 
-		out.println("        <script src=\"js/index.js\"></script>");
+		out.println("<script src=\"/js/index.js\"></script>");
 
-		out.println("  </body>");
+		out.println("</body>");
 		out.println("</html>");
 	}
 }
