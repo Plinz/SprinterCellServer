@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
 		out.println(" <div id=\"signup\">");
 		out.println("<h1>Sign Up for Free</h1>");
 
-		out.println("<form action=\"/\" method=\"post\">");
+		out.println("<form action=\"/Register\" method=\"post\">");
 
 		out.println("<div class=\"top-row\">");
 		out.println("<div class=\"field-wrap\">");
@@ -84,7 +84,7 @@ public class Login extends HttpServlet {
 		out.println("<div id=\"login\">");
 		out.println("<h1>Welcome Back!</h1>");
 
-		out.println("<form action=\"/\" method=\"post\">");
+		out.println("<form action=\"/LogIn\" method=\"post\">");
 
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
