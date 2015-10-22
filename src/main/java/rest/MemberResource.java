@@ -24,9 +24,15 @@ public class MemberResource {
 	}
 	
 	@POST
-	public Member createMember(Member member) {
-		int id = dao.insert(member.getPseudo());
-		return member;
+	public Boolean createMember(Member member) {
+		Member m = this.dao.findByPseudo(member.getPseudo());
+		if (m!=null && m.getPseudo()==member.getPseudo()){
+			return false;
+		}
+		else{
+			int id = dao.insert(member.getPseudo());
+			return true;
+		}
 	}
 
 	@GET
@@ -39,7 +45,7 @@ public class MemberResource {
 		return user;
 	}
 	
-	@GET
+	@POST
 	@Path("/login")
 	public Boolean login(Member member){
 		Member user = dao.findByPseudo(member.getPseudo());
