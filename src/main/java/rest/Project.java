@@ -1,6 +1,5 @@
 package rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import BDD.App;
@@ -22,6 +21,12 @@ public class Project {
 	public Project(String name, String description) {
 		this.name = name;
 		this.description = description;
+	}
+	
+	public void update(Project update){
+		this.name = update.getName();
+		this.description = update.getDescription();
+		this.daoProject.update(this);
 	}
 	
 	public void addMember(Member m){
