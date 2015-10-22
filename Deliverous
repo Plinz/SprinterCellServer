@@ -1,6 +1,6 @@
 conteneur:
     image: dowan/SprinterCell
     ports:
-    - ip: 5.135.124.162
+    - ip: 37.59.171.4 
       host_port: 80
       container_port: 8080
