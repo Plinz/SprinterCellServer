@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.sql.*;
 
-@WebServlet("/servlet/Login")
+@WebServlet("/servlet/Connect")
 public class Connect extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
@@ -45,22 +45,14 @@ public class Connect extends HttpServlet {
 
 		out.println("<form action=\"/servlet/Register\" method=\"get\">");
 
-		out.println("<div class=\"top-row\">");
+		
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
-		out.println("First Name<span class=\"req\">*</span>");
+		out.println("E-Mail<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println(" <input type=\"text\" required autocomplete=\"off\" />");
-		out.println(" </div>");
-
-		out.println("<div class=\"field-wrap\">");
-		out.println("<label>");
-		out.println("Last Name<span class=\"req\">*</span>");
-		out.println("</label>");
-		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"email\" name=\"email\" required autocomplete=\"off\" />");
 		out.println("</div>");
-		out.println(" </div>");
-
+		
 		out.println("<div class=\"field-wrap\">");
 		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");

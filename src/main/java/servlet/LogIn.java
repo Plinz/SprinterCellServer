@@ -19,13 +19,17 @@ public class LogIn extends HttpServlet
 
 		// authentifie ?
 		HttpSession session = req.getSession(true);
-		if(session.getAttribute("pseudo") != null){
-			res.sendRedirect("Menu");
+		String pseudo = req.getParameter("pseudo");
+		if(pseudo == null){
+			res.sendRedirect("/servlet/Menu");
 		}
 		
 		MemberDAO m = App.getDbi().open(MemberDAO.class);
 		
 		if(m.findByPseudo(pseudo) == null){
+			res.sendRedirect("/servlet/Menu");
+		}
+		else{
 			
 		}
 	}
