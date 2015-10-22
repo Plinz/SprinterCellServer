@@ -50,7 +50,7 @@ public class Connect extends HttpServlet {
 		out.println("<label>");
 		out.println("First Name<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println(" <input type=\"text\" name=\"pseudo\" required autocomplete=\"off\" />");
+		out.println(" <input type=\"text\" required autocomplete=\"off\" />");
 		out.println(" </div>");
 
 		out.println("<div class=\"field-wrap\">");
@@ -65,7 +65,7 @@ public class Connect extends HttpServlet {
 		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"text\" name=\"pseudo\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<div class=\"field-wrap\">");
@@ -90,7 +90,7 @@ public class Connect extends HttpServlet {
 		out.println("<label>");
 		out.println("Nickname<span class=\"req\">*</span>");
 		out.println("</label>");
-		out.println("<input type=\"text\" required autocomplete=\"off\" />");
+		out.println("<input type=\"text\" name=\"pseudo\" required autocomplete=\"off\" />");
 		out.println("</div>");
 
 		out.println("<div class=\"field-wrap\">");
