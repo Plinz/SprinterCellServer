@@ -1,5 +1,5 @@
 conteneur:
-    image: Plinz/SprinterCellServer
+    image: plinz/sprintercellserver
     ports:
     - ip: 37.59.171.4 
       host_port: 80
