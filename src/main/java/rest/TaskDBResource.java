@@ -25,15 +25,15 @@ public class TaskDBResource {
 	
 	@POST
 	public Task createTask(Task task) {
-		int id = dao.insert(task.getId());
+		int id = dao.insert(task.getTitle(), task.getDescription(), task.getValue());
 		task.setId(id);
 		return task;
 	}
 
 	@GET
-	@Path("/{name}")
-	public Task getTask(@PathParam("name") int idt) {
-		Task task = dao.findByIdt(idt);
+	@Path("/{title}")
+	public Task getTask(@PathParam("title") String title) {
+		Task task = dao.findByTitle(title);
 		if (task == null) {
 			throw new WebApplicationException(404);
 		}

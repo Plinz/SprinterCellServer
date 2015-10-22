@@ -9,31 +9,27 @@ import BDD.TaskDao;
 public class Task {
 	private String title;
 	private int id, value;
-	private String description;
-	private ArrayList<Member> members;
+	private String description, state;
 	private static TaskDao dao ;
 	static {
 		setDao(App.getDbi().open(TaskDao.class));
 	}
 	
-	public Task(int id, String title, ArrayList<Member> members,String description, int value) {
-		this.id = id;
+	public Task(String title, String description, int value) {
 		this.title = title;
-		this.members = members;
 		this.description = description;
+		state = "TO DO";
 		this.value = value;
 	}
 	
 	
-	public ArrayList<Member> getMembers() {
-		return members;
+	public String getState() {
+		return state;
 	}
-	
 
-	public void setMembers(ArrayList<Member> members) {
-		this.members = members;
+	public void setState(String state) {
+		this.state = state;
 	}
-	
 
 	public void addUser(Member member){
 		
