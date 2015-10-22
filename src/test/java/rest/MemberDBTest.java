@@ -36,7 +36,7 @@ public class MemberDBTest extends JerseyTest {
 	public void testCreateUser() {
 		MemberResource mr = new MemberResource();
 		Member m = new Member("Naruto");
-		mr.createUser(m);
+		mr.createMember(m);
 		Member membre = target("/memberdb/Naruto").request().get(Member.class);
 		assertEquals("Naruto", membre.getPseudo());
 	}
@@ -46,8 +46,8 @@ public class MemberDBTest extends JerseyTest {
 		MemberResource mr = new MemberResource();
 		Member m = new Member("Naruto");
 		Member m2 = new Member("Kakashi");
-		mr.createUser(m);
-		mr.createUser(m2);
+		mr.createMember(m);
+		mr.createMember(m2);
 		List<Member> users = target("/memberdb/").request().get(new GenericType<List<Member>>(){});
 		assertEquals(2, users.size());
 	}
@@ -57,8 +57,8 @@ public class MemberDBTest extends JerseyTest {
 		MemberResource mr = new MemberResource();
 		Member m = new Member("A");
 		Member m2 = new Member("B");
-		mr.createUser(m);
-		mr.createUser(m2);
+		mr.createMember(m);
+		mr.createMember(m2);
 		List<Member> users = target("/memberdb/").request().get(new GenericType<List<Member>>(){});
 		
 		assertEquals("A", users.get(0).getPseudo());

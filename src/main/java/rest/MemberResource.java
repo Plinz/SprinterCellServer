@@ -24,23 +24,36 @@ public class MemberResource {
 	}
 	
 	@POST
-	public Member createUser(Member member) {
+	public Member createMember(Member member) {
 		int id = dao.insert(member.getPseudo());
 		return member;
 	}
 
 	@GET
-	@Path("/{name}")
-	public Member getUser(@PathParam("name") String pseudo) {
+	@Path("/{pseudo}")
+	public Member getMember(@PathParam("name") String pseudo) {
 		Member user = dao.findByPseudo(pseudo);
 		if (user == null) {
 			throw new WebApplicationException(404);
 		}
 		return user;
 	}
+	
+	@GET
+	@Path("/login")
+	public Boolean login(Member member){
+		Member user = dao.findByPseudo(member.getPseudo());
+		if (user.getMdp()==member.getMdp()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 
 	@GET
-	public List<Member> getAllUsers() {
+	public List<Member> getAllMember() {
 		return dao.all();
 	}
 }
