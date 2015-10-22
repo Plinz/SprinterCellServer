@@ -13,7 +13,7 @@ public class Task {
 	private ArrayList<Member> members;
 	private static TaskDao dao ;
 	static {
-		dao = App.getDbi().open(TaskDao.class);
+		setDao(App.getDbi().open(TaskDao.class));
 	}
 	
 	public Task(int id, String title, ArrayList<Member> members,String description, int value) {
@@ -23,11 +23,7 @@ public class Task {
 		this.description = description;
 		this.value = value;
 	}
-
-
 	
-
-
 	
 	public ArrayList<Member> getMembers() {
 		return members;
@@ -84,6 +80,14 @@ public class Task {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public TaskDao getDao() {
+		return dao;
+	}
+
+	public static void setDao(TaskDao dao) {
+		Task.dao = dao;
 	}
 	
 	

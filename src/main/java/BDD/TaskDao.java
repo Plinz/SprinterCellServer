@@ -42,6 +42,7 @@ public interface TaskDao {
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	List<Task> all();
 	
+	
 
 	public void close();
 	

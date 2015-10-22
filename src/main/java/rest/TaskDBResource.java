@@ -19,7 +19,7 @@ public class TaskDBResource {
 			dao.createTaskTable();
 			
 		} catch (Exception e) {
-			System.out.println("Table déjà là !");
+			System.out.println("Table already exists");
 		}
 	}
 	
