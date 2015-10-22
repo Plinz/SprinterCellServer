@@ -1,5 +1,5 @@
 conteneur:
-    image: dowan/SprinterCell
+    image: Plinz/SprinterCell
     ports:
     - ip: 37.59.171.4 
       host_port: 80
