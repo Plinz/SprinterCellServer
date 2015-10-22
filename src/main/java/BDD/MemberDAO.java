@@ -21,7 +21,7 @@ public interface MemberDAO {
 	
 	@SqlUpdate("insert into members (mdp, email, projects, pseudo)")
 	@GetGeneratedKeys
-	public int insert(@BindBean Integer id);
+	public int insert(@BindBean String pseudo);
 	
 	@SqlUpdate("update members set mdp = :mdp, email = :email, projects = :projects, pseudo = :pseudo")
 	public void update(@BindBean Member m);
@@ -33,9 +33,9 @@ public interface MemberDAO {
     @RegisterMapperFactory(BeanMapperFactory.class)
 	public Member findByIdm(@Bind("idm") int idm);
 	
-	@SqlQuery("select * from projects, projectmembers  where idm = :idm and projects.idp = projectmembers.idp")
+	@SqlQuery("select * from projects, projectmembers  where pseudo = :pseudo and projects.idp = projectmembers.idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	public ArrayList<rest.Project> getProjects(@Bind("idm") int idm);
+	public ArrayList<rest.Project> getProjects(@Bind("idm") String pseudo);
 	
 	@SqlUpdate("delete from members where idm = :idm")
 	public int deleteMember(@Bind("idm") int idm);

@@ -2,11 +2,12 @@ package rest;
 
 import java.util.ArrayList;
 
+import rest.Project;
+
 import BDD.App;
 import BDD.MemberDAO;
 
 public class Member {
-	private Integer id;
 	private String mdp;
 	private String email;
 	private String pseudo;
@@ -27,14 +28,9 @@ public class Member {
 				+ "\nprojets :" +getProjets();
 		return print;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-	public Integer getId(){
-		return id;
-	}
+	
 	public ArrayList<Project> getProjets() {
-		return dao.getProjects(id);
+		return dao.getProjects(pseudo);
 	}
 
 	public String getPseudo() {

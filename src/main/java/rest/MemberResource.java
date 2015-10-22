@@ -25,8 +25,7 @@ public class MemberResource {
 	
 	@POST
 	public Member createUser(Member member) {
-		int id = dao.insert(member.getId());
-		member.setId(id);
+		int id = dao.insert(member.getPseudo());
 		return member;
 	}
 
