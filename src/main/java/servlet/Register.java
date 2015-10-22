@@ -6,6 +6,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.ws.rs.core.Application;
 
+import rest.Member;
+
 import BDD.App;
 import BDD.MemberDAO;
 
@@ -21,24 +23,16 @@ public class Register extends HttpServlet {
 	}
 	public void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		
-		PrintWriter out = res.getWriter();
-		res.setContentType("text/html");
-		out.println("<!DOCTYPE html>");
-		out.println("<html >");
-		out.println("<head>");
-		out.println("<meta charset=\"UTF-8\">");
-		out.println("</head>");
-		out.println("<body>");
-
 		String pseudo = req.getParameter("pseudo");
-		out.println(pseudo+ " TON PSEUDO KONAR ");
-		out.println(" TdsdNAR ");
-		out.println("</body>");
-		out.println("</html>");
 		HttpSession session = req.getSession(true);
 		if (session.getAttribute("pseudo") != null) {
-			res.sendRedirect("Menu");
+			res.sendRedirect("/servlet/Menu");
 		}
+		daoMember.insert(pseudo);
+		Member m = new Member(pseudo);
+		m.setMdp(req.getParameter("password"));
+		m.setEmail(req.getParameter("email"));
+		daoMember.update(m);
+		
 	}
 }
