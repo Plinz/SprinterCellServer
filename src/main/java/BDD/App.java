@@ -10,6 +10,7 @@ import org.skife.jdbi.v2.DBI;
 import org.sqlite.SQLiteDataSource;
 
 import rest.MemberResource;
+import rest.TaskDBResource;
 
 @ApplicationPath("/v1/")
 public class App extends ResourceConfig {
@@ -17,6 +18,7 @@ public class App extends ResourceConfig {
     public App() {
     	packages("rest");
     	register(MemberResource.class);
+    	register(TaskDBResource.class);
     }
     
     public static DBI getDbi() {
