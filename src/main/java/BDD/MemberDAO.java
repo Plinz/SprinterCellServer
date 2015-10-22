@@ -29,6 +29,9 @@ public interface MemberDAO {
 	@SqlQuery("select count(*) from members")
 	public int countM();
 	
+	@SqlQuery("select mdp from members where pseudo = :pseudo")
+	public String getMdp(@Bind("pseudo") String pseudo);
+	
 	@SqlQuery("select * from members where pseudo = :pseudo")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	public Member findByPseudo(@Bind("pseudo") String pseudo);

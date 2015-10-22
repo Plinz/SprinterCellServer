@@ -23,14 +23,17 @@ public class LogIn extends HttpServlet
 		if(pseudo == null){
 			res.sendRedirect("/servlet/Menu");
 		}
-		
+
 		MemberDAO m = App.getDbi().open(MemberDAO.class);
-		
+
 		if(m.findByPseudo(pseudo) == null){
 			res.sendRedirect("/servlet/Menu");
 		}
-		else{
+		else if(m.getMdp(pseudo).equals(req.getParameter("password"))){
+				session.setAttribute("pseudo", pseudo);
+				res.sendRedirect("/servlet/WorkPanel");
 			
 		}
+		res.sendRedirect("/servlet/Menu");
 	}
 }
