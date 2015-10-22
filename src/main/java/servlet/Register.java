@@ -28,6 +28,6 @@ public class Register extends HttpServlet {
 		}
 		daoMember.insert(pseudo);
 		daoMember.update(pseudo, req.getParameter("password"), req.getParameter("email"));
-		
+		session.setAttribute("pseudo", pseudo);
 	}
 }
