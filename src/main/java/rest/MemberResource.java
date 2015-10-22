@@ -19,7 +19,7 @@ public class MemberResource {
 		try {
 			dao.createMemberTable();
 		} catch (Exception e) {
-			System.out.println("Table déjà là !");
+			System.out.println("Table already exists !");
 		}
 	}
 	

@@ -31,7 +31,7 @@ public class ProjectDBRessource {
 		try {
 			daoProject.createProjectTable();
 		} catch (Exception e) {
-			System.out.println("Table déjà là !");
+			System.out.println("Table already exists !");
 		}
 	}
 	
