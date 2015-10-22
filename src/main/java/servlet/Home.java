@@ -14,7 +14,7 @@ public class Home extends HttpServlet
     	
     	HttpSession session = req.getSession(true);
     	if(session.getAttribute("pseudo") == null){
-    		res.sendRedirect("accueil.html");
+    		res.sendRedirect("index.html");
     	}
     	out.println("<html>");
     	out.println("<head>");
