@@ -16,12 +16,12 @@ import rest.Member;
 
 public interface MemberDAO {
 
-	@SqlUpdate("create members (pseudo varchar(50) primary key, mdp varchar(30), email varchar(50), projects text)")
+	@SqlUpdate("create table members (pseudo varchar(50) primary key, mdp varchar(30), email varchar(50), projects text)")
 	public void createMemberTable();
 	
-	@SqlUpdate("insert into members (pseudo, mdp, email, projects)")
+	@SqlUpdate("insert into members (pseudo) values (:pseudo)")
 	@GetGeneratedKeys
-	public int insert(@BindBean String pseudo);
+	public int insert(@Bind("pseudo") String pseudo );
 	
 	@SqlUpdate("update members set pseudo = :pseudo, mdp = :mdp, email = :email, projects = :projects")
 	public void update(@BindBean Member m);

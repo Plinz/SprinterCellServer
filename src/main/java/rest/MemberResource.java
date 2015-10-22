@@ -31,7 +31,7 @@ public class MemberResource {
 
 	@GET
 	@Path("/{name}")
-	public Member getUser(@PathParam("pseudo") String pseudo) {
+	public Member getUser(@PathParam("name") String pseudo) {
 		Member user = dao.findByPseudo(pseudo);
 		if (user == null) {
 			throw new WebApplicationException(404);

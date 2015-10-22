@@ -1,5 +1,7 @@
 package BDD;
 
+import javassist.compiler.ast.Member;
+
 import javax.ws.rs.ApplicationPath;
 
 import org.glassfish.jersey.filter.LoggingFilter;
@@ -7,11 +9,14 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.skife.jdbi.v2.DBI;
 import org.sqlite.SQLiteDataSource;
 
-@ApplicationPath("/v2/")
+import rest.MemberResource;
+
+@ApplicationPath("/v1/")
 public class App extends ResourceConfig {
     
     public App() {
-    	packages("BDD");
+    	packages("rest");
+    	register(MemberResource.class);
     }
     
     public static DBI getDbi() {
