@@ -41,7 +41,7 @@ public class ProjectDBRessource {
 	public rest.Project createProject(@PathParam("pseudo") String pseudo, Project project) {
 		System.out.println("S1");
 		project.addMember(this.daoMember.findByPseudo(pseudo));
-		this.daoProject.insert(project.getName(), project.getDescription(), project.getTasks().toString(), project.getMembers().toString() );
+		this.daoProject.insert(project.getName(), project.getDescription());
 		System.out.println("S3");
 		return project;
 	}

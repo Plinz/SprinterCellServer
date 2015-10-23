@@ -1,14 +1,17 @@
 package servlet;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import BDD.App;
 import BDD.MemberDAO;
-
-import java.sql.*;
 
 @WebServlet("/servlet/LogIn")
 public class LogIn extends HttpServlet 
@@ -26,13 +29,9 @@ public class LogIn extends HttpServlet
 
 		MemberDAO m = App.getDbi().open(MemberDAO.class);
 
-		if(m.findByPseudo(pseudo) == null){
-			res.sendRedirect("/servlet/Connect");
-		}
-		else if(m.getMdp(pseudo).equals(req.getParameter("password"))){
+		if(m.getMdp(pseudo).equals(req.getParameter("password"))){
 				session.setAttribute("pseudo", pseudo);
-				res.sendRedirect("/servlet/WorkPanel");
-			
+				res.sendRedirect("/servlet/WorkPanel");	
 		}
 		res.sendRedirect("/servlet/Connect");
 	}

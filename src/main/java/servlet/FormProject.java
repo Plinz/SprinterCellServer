@@ -23,9 +23,9 @@ public class FormProject extends HttpServlet{
 		res.setContentType("text/html");
 		HttpSession session = req.getSession(true);
 
-		/*	if(session.getAttribute("pseudo").equals("")){
+		if(session.getAttribute("pseudo").equals("")){
 			res.sendRedirect("/servlet/Connect");
-		}*/
+		}
 
 		try{
 			out.println("<html>");

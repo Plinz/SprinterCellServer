@@ -1,11 +1,8 @@
 package BDD;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.persistence.sessions.Project;
 import org.skife.jdbi.v2.sqlobject.Bind;
-import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
@@ -39,7 +36,7 @@ public interface MemberDAO {
 	
 	@SqlQuery("select * from projects, projectmembers  where pseudo = :pseudo and projects.idp = projectmembers.idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	public List<rest.Project> getProjects(@Bind("idm") String pseudo);
+	public List<rest.Project> getProjects(@Bind("pseudo") String pseudo);
 	
 	@SqlUpdate("delete from members where pseudo = :pseudo")
 	public int deleteMember(@Bind("pseudo") String pseudo);

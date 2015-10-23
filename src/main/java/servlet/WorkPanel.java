@@ -37,6 +37,7 @@ public class WorkPanel extends HttpServlet{
 		ProjectToTaskDao pttd = App.getDbi().open(ProjectToTaskDao.class);
 		ProjectToMemberDao ptmd = App.getDbi().open(ProjectToMemberDao.class);
 		HttpSession session = req.getSession(true);
+		
 		try {
 			md.createMemberTable();
 		} catch (Exception e) {}

@@ -16,14 +16,14 @@ import rest.Task;
 
 public interface ProjectDAO {
 
-	@SqlUpdate("create table projects (idp integer primary key autoincrement, namep varchar(20), descriptionp varchar(100), tasksp text, membersp text)")
+	@SqlUpdate("create table projects (idp integer primary key autoincrement, namep varchar(20), descriptionp varchar(100))")
 	public void createProjectTable();
 	
-	@SqlUpdate("insert into projects(namep, descriptionp, tasksp, membersp) values(:namep, :descriptionp, :tasksp, :membersp)")
+	@SqlUpdate("insert into projects(namep, descriptionp) values(:namep, :descriptionp)")
 	@GetGeneratedKeys
-	public int insert(@Bind("namep") String namep, @Bind("descriptionp") String descriptionp, @Bind("tasksp") String tasks, @Bind("membersp") String membersp);
+	public int insert(@Bind("namep") String namep, @Bind("descriptionp") String descriptionp);
 	
-	@SqlUpdate("update projects set namep = :namep, descriptionp = :descriptionp, tasksp = :tasksp, membersp = :membersp")
+	@SqlUpdate("update projects set namep = :namep, descriptionp = :descriptionp")
 	public void update(@BindBean Project p);
 	
 	@SqlQuery("select count(*) from projects")
@@ -40,6 +40,10 @@ public interface ProjectDAO {
 	@SqlQuery("select * from projects where idp = :idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	public Project findProjectByIdp(@Bind("idp") int idp);
+	
+	@SqlQuery("select idp from projects where namep = :namep and descriptionp = :descriptionp")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	public Integer findProjectByNameAndDescription(@Bind("namep") String namep, @Bind("descriptionp") String descriptionp);
 	
 	@SqlUpdate("delete from projects where idp = :idp")
 	public int deleteProject(@Bind("idp") int idp);
