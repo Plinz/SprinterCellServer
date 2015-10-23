@@ -29,7 +29,7 @@ public interface ProjectDAO {
 	@SqlQuery("select count(*) from projects")
 	public int countP();
 	
-	@SqlQuery("select * from members, projectmembers where members.idm = projectmembers.idm and projectmembers.idp = :idp")
+	@SqlQuery("select * from members, projectmembers where members.pseudo = projectmembers.pseudo and projectmembers.idp = :idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
 	public List<Member> findMembersByIdp(@Bind("idp") int idp);
 	

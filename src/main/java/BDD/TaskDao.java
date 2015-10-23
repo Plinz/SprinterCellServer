@@ -2,6 +2,7 @@ package BDD;
 
 import java.util.List;
 
+import rest.Member;
 import rest.Task;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
@@ -26,6 +27,10 @@ public interface TaskDao {
 	
 	@SqlQuery("select count(*) from tasks")
 	public int count();
+	
+	@SqlQuery("select * from tasks, tasksmembers where tasks.pseudo = projectmembers.pseudo and tasksmembers.idt = :idt")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+	public List<Member> findMembersByIdt(@Bind("idt") int idt);
 	
 	@SqlQuery("select * from tasks where idt = :idt")
     @RegisterMapperFactory(BeanMapperFactory.class)
