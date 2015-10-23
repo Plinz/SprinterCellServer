@@ -4,7 +4,6 @@ import java.util.List;
 
 import BDD.App;
 import BDD.TaskDao;
-import BDD.TaskToMemberDAO;
 
 
 public class Task {
