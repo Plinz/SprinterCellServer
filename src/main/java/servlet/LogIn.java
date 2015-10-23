@@ -34,6 +34,6 @@ public class LogIn extends HttpServlet
 				res.sendRedirect("/servlet/WorkPanel");
 			
 		}
-		res.sendRedirect("/servlet/WorkPanel");
+		res.sendRedirect("/servlet/Connect");
 	}
 }
