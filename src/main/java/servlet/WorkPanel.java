@@ -128,8 +128,8 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"panel panel-info\">");
 			out.println("<div class=\"panel-heading\">");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-9\"><h4>"+""+"</h4></div>");
-			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
+			out.println("<div class=\"col-lg-9\"><h4>"+tasks.get(i).getTitle()+"</h4></div>");
+			out.println("<div class=\"col-lg-1\"><h4>"+tasks.get(i).getValue()+"</h4></div>");
 			out.println("<div class=\"col-lg-2\">");	
 			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
 			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
