@@ -1,17 +1,18 @@
 package rest;
 
+import java.util.List;
+
 import BDD.App;
 import BDD.TaskDao;
+import BDD.TaskToMemberDAO;
 
 
 public class Task {
 	private String title;
 	private int id, value;
 	private String description, state;
-	private static TaskDao dao ;
-	static {
-		dao = App.getDbi().open(TaskDao.class);
-	}
+	private static TaskDao daoTasks = App.getDbi().open(TaskDao.class); ;
+
 
 	public Task() {
 		
@@ -81,7 +82,11 @@ public class Task {
 	}
 
 	public TaskDao getDao() {
-		return dao;
+		return daoTasks;
+	}
+	
+	public List<Member> getMembers(){
+		return this.daoTasks.findMembersByIdt(this.id);
 	}
 
 	
