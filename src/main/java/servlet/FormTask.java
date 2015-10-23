@@ -91,7 +91,14 @@ public class FormTask extends HttpServlet{
 			out.println("<p><br/></p>");
 			out.println("<textarea cols=\"26\" maxlength=\"100\" value=\"description(facultative)\"></textarea>");
 			out.println("<p><br/></p>");
-			out.println("<input type=\"text\" name=\"color\" required>");
+			out.println("<div class=\"dropdown\">");
+			out.println("<button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">Dropdown");
+			out.println("<span class=\"caret\"></span>");
+			out.println("</button>");
+			out.println("<ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">");
+			out.println("<li><p id>Action</a></li>");
+			out.println("</ul>");
+			out.println("</div>");
 
 			
 			
