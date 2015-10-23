@@ -1,25 +1,5 @@
 package servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import rest.Member;
-import rest.Project;
-import rest.Task;
-import BDD.App;
-import BDD.MemberDAO;
-import BDD.ProjectToMemberDao;
-import BDD.ProjectToTaskDao;
-import BDD.TaskDao;
 
 
 @WebServlet("servlet/WorkPanel")
@@ -31,26 +11,6 @@ public class WorkPanel extends HttpServlet{
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
 
-
-		TaskDao dt = App.getDbi().open(TaskDao.class);
-		MemberDAO md = App.getDbi().open(MemberDAO.class);
-		ProjectToTaskDao pttd = App.getDbi().open(ProjectToTaskDao.class);
-		ProjectToMemberDao ptmd = App.getDbi().open(ProjectToMemberDao.class);
-		HttpSession session = req.getSession(true);
-		
-		try {
-			md.createMemberTable();
-		} catch (Exception e) {}
-		try {
-			dt.createTaskTable();
-		} catch (Exception e) {}
-		try {
-			pttd.createProjectTask();
-		} catch (Exception e) {}
-		try {
-			ptmd.createProjectMember();
-		} catch (Exception e) {}
-
 		try{
 
 			out.println("<html>");
@@ -61,7 +21,6 @@ public class WorkPanel extends HttpServlet{
 			out.println("<script src=\"https://code.jquery.com/jquery-1.11.2.min.js\"></script>");
 			out.println("<script src=\"/js/jquery.js\"></script>");
 			out.println("<script src=\"/js/bootstrap.min.js\"></script>");
-			out.println("");
 			out.println("</head>");
 
 			out.println("<body>");
@@ -72,28 +31,13 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"navbar-header\">");
 			out.println("<ul class=\"nav navbar-nav\">");
 			out.println("<li class=\"dropdown\">");
-			out.println("<a href=\"#\" class=\"dropdown-toggle navbar-brand\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">My projects<span class=\"caret\"></span></a>");
+			out.println("<a href=\"#\" class=\"dropdown-toggle navbar-brand\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Mes projets<span class=\"caret\"></span></a>");
 			out.println("<ul class=\"dropdown-menu\">");
-			try{
-				List<Project> listProject = md.getProjects((String) session.getAttribute("pseudo"));
-
-				for (int j = 0; j < listProject.size(); j++) {
-
-					listProject.get(j).getName() ;
-				}
-			}
-			catch(Exception e){
-				e.printStackTrace();
-				res.sendRedirect("/servlet/FormProject");
-			}
-			out.println("<li><a href=\"#\">Project 1</a></li>");
-			out.println("<li><a href=\"#\">Project 2</a></li>");
-			out.println("<li><a href=\"#\">Project 3</a></li>");
+			out.println("<li><a href=\"#\">Projet 1</a></li>");
+			out.println("<li><a href=\"#\">Projet 2</a></li>");
+			out.println("<li><a href=\"#\">Projet 3</a></li>");
 			out.println("</ul>");
 			out.println("</li>");
-			out.println("<li><a href=\"/servlet/FormProject\">New Project</a></li>");
-			out.println("<li><a href=\"/servlet/FormTask\">Add Task</a></li>");
-			out.println("<li><a href=\"#\">Add contributor</a></li>");
 			out.println("</ul>");
 			out.println("</div>");
 
@@ -128,18 +72,12 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"col-sm-6 col-md-4\">");
 			out.println("<h2 style=\"text-align:center\"><span class=\" label label-primary\">TO DO</h2>");
 			out.println("<div class=\"thumbnail\">");
-
 			// UNE TACHE
 			out.println("<!--UNE TACHE -->");
 			out.println("<div class=\"panel panel-info\">");
 			out.println("<div class=\"panel-heading\">");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-2\">");
-			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-			out.println("<span class=\"glyphicon glyphicon-triangle-left\" aria-hidden=\"true\"></span>");
-			out.println("</button>");
-			out.println("</div>");
-			out.println("<div class=\"col-lg-7\"><h4>Nom</h4></div>");
+			out.println("<div class=\"col-lg-9\"><h4>Nom</h4></div>");
 			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
 			out.println("<div class=\"col-lg-2\">");	
 			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
@@ -152,24 +90,19 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
-			//Fin D'UNE TACHE
+			//FIN D'UNE TACHE
 			// UNE TACHE
 			out.println("<!--UNE TACHE -->");
-			out.println("<div class=\"panel panel-success\">");
+			out.println("<div class=\"panel panel-info\">");
 			out.println("<div class=\"panel-heading\">");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-2\">");
-			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-			out.println("<span class=\"glyphicon glyphicon-triangle-left\" aria-hidden=\"true\"></span>");
-			out.println("</button>");
-			out.println("</div>");
-			out.println("<div class=\"col-lg-7\"><h4>Nom</h4></div>");
+			out.println("<div class=\"col-lg-9\"><h4>Nom</h4></div>");
 			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
 			out.println("<div class=\"col-lg-2\">");	
 			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
@@ -182,89 +115,15 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
 			//Fin D'UNE TACHE
-			// UNE TACHE
-			out.println("<!--UNE TACHE -->");
-			out.println("<div class=\"panel panel-warning\">");
-			out.println("<div class=\"panel-heading\">");
-			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-2\">");
-			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-			out.println("<span class=\"glyphicon glyphicon-triangle-left\" aria-hidden=\"true\"></span>");
-			out.println("</button>");
-			out.println("</div>");
-			out.println("<div class=\"col-lg-7\"><h4>Nom</h4></div>");
-			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
-			out.println("<div class=\"col-lg-2\">");	
-			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
-			out.println("</button>");
 			out.println("</div>");
 			out.println("</div>");
-			out.println("<div class=\"panel\">");
-			out.println("<div>sfbkjgh rgkergjepr erng;rgdjgkfjhdoifofpof posrjgpodfgpdofigpfdfgfpg pfgjdpfjgrijgdjmrfhod</div>");
-			out.println("</div>");
-			out.println("<div>");
-			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">contributor:</div>");
-			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			//Fin D'UNE TACHE
-			// TACHE
-			/*
-			List<rest.Project> projects = md.getProjects((String)(session.getAttribute("pseudo")));
-			List<Task> tasks = projects.get(0).getTasks();
-			for(int i=0;i<tasks.size();i++){
-				if(tasks.get(i).getState().equals("TO DO")){
-					out.println("<!--UNE TACHE -->");
-					out.println("<div class=\"panel panel-info\">");
-					out.println("<div class=\"panel-heading\">");
-					out.println("<div class=\"row\">");
-					out.println("<div class=\"col-lg-9\"><h4>Task\'s name:</h4></div>");
-					out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
-					out.println("<div class=\"col-lg-2\">");	
-
-					out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-					out.println("<a href=\"/servlet/ModifState\"><span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
-					out.println("</button>");
-
-					out.println("</div>");
-					out.println("</div>");
-					out.println("<div class=\"panel\">");
-					out.println("<div>Description</div>");
-					out.println("</div>");
-					out.println("<div>");
-					out.println("<div class=\"row\">");
-					out.println("<div class=\"col-lg-3\">contributor:</div>");
-					out.println("<div class=\"col-lg-9\">");
-					/*List<Member> tasksMember = tasks.getMembers();
-					for (int j = 0; j < tasksMember.length; j++) {
-						tasksMember.get(i).getPseudo() ;
-					}
-					out.println("</div>");
-					out.println("</div>");
-					out.println("</div>");
-					out.println("</div>");
-					out.println("</div>");
-				}
-				if(tasks.get(i).getState().equals("DOING")){
-
-
-				}
-				if(tasks.get(i).getState().equals("DONE")){
-
-
-				}
-			}*/
 
 
 			//DOING
@@ -295,7 +154,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
@@ -325,7 +184,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
@@ -359,7 +218,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
