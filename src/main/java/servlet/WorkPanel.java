@@ -2,11 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.standard.PDLOverrideSupported;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,11 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.jetty.server.session.JDBCSessionManager.Session;
-import org.eclipse.persistence.sessions.Project;
-
+import rest.Member;
 import rest.Task;
-
 import BDD.App;
 import BDD.MemberDAO;
 import BDD.ProjectToMemberDao;
@@ -34,7 +29,7 @@ public class WorkPanel extends HttpServlet{
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
-		
+
 		TaskDao dt = App.getDbi().open(TaskDao.class);
 		MemberDAO md = App.getDbi().open(MemberDAO.class);
 		ProjectToTaskDao pttd = App.getDbi().open(ProjectToTaskDao.class);
@@ -63,6 +58,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("<script src=\"https://code.jquery.com/jquery-1.11.2.min.js\"></script>");
 			out.println("<script src=\"/js/jquery.js\"></script>");
 			out.println("<script src=\"/js/bootstrap.min.js\"></script>");
+			out.println("");
 			out.println("</head>");
 
 			out.println("<body>");
@@ -117,67 +113,52 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"col-sm-6 col-md-4\">");
 			out.println("<h2 style=\"text-align:center\"><span class=\" label label-primary\">TO DO</h2>");
 			out.println("<div class=\"thumbnail\">");
-			
-			// UNE TACHE
+
+			// TACHE
 			ArrayList<rest.Project> projects = md.getProjects((String)(session.getAttribute("pseudo")));
 			List<Task> tasks = projects.get(0).getTasks();
-			
 			for(int i=0;i<tasks.size();i++){
-			
-			out.println("<!--UNE TACHE -->");
-			out.println("<div class=\"panel panel-info\">");
-			out.println("<div class=\"panel-heading\">");
-			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-9\"><h4>"+tasks.get(i).getTitle()+"</h4></div>");
-			out.println("<div class=\"col-lg-1\"><h4>"+tasks.get(i).getValue()+"</h4></div>");
-			out.println("<div class=\"col-lg-2\">");	
-			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
-			out.println("</button>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<div class=\"panel\">");
-			out.println("<div>sfbkjgh rgkergjepr erng;rgdjgkfjhdoifofpof posrjgpodfgpdofigpfdfgfpg pfgjdpfjgrijgdjmrfhod</div>");
-			out.println("</div>");
-			out.println("<div>");
-			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
-			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			
+				if(tasks.get(i).getState().equals("TO DO")){
+					out.println("<!--UNE TACHE -->");
+					out.println("<div class=\"panel panel-info\">");
+					out.println("<div class=\"panel-heading\">");
+					out.println("<div class=\"row\">");
+					out.println("<div class=\"col-lg-9\"><h4>"+tasks.get(i).getTitle()+"</h4></div>");
+					out.println("<div class=\"col-lg-1\"><h4>"+tasks.get(i).getValue()+"</h4></div>");
+					out.println("<div class=\"col-lg-2\">");	
+					
+					out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+					out.println("<a href=\"/servlet/ModifState\"><span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
+					out.println("</button>");
+					
+					out.println("</div>");
+					out.println("</div>");
+					out.println("<div class=\"panel\">");
+					out.println("<div>"+tasks.get(i).getDescription()+"</div>");
+					out.println("</div>");
+					out.println("<div>");
+					out.println("<div class=\"row\">");
+					out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
+					out.println("<div class=\"col-lg-9\">");
+					List<Member> tasksMember = tasks.getMembers();
+					for (int j = 0; j < tasksMember.length; j++) {
+						tasksMember.get(i).getPseudo() ;
+					}
+					out.println("</div>");
+					out.println("</div>");
+					out.println("</div>");
+					out.println("</div>");
+					out.println("</div>");
+				}
+				if(tasks.get(i).getState().equals("DOING")){
+					
+					
+				}
+				if(tasks.get(i).getState().equals("DONE")){
+					
+					
+				}
 			}
-			
-			//FIN D'UNE TACHE
-			// UNE TACHE
-			out.println("<!--UNE TACHE -->");
-			out.println("<div class=\"panel panel-info\">");
-			out.println("<div class=\"panel-heading\">");
-			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-9\"><h4>Nom</h4></div>");
-			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
-			out.println("<div class=\"col-lg-2\">");	
-			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
-			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
-			out.println("</button>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<div class=\"panel\">");
-			out.println("<div>sfbkjgh rgkergjepr erng;rgdjgkfjhdoifofpof posrjgpodfgpdofigpfdfgfpg pfgjdpfjgrijgdjmrfhod</div>");
-			out.println("</div>");
-			out.println("<div>");
-			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
-			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			//Fin D'UNE TACHE
-			out.println("</div>");
-			out.println("</div>");
 
 
 			//DOING
