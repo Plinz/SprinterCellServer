@@ -129,7 +129,98 @@ public class WorkPanel extends HttpServlet{
 			out.println("<h2 style=\"text-align:center\"><span class=\" label label-primary\">TO DO</h2>");
 			out.println("<div class=\"thumbnail\">");
 
+			// UNE TACHE
+			out.println("<!--UNE TACHE -->");
+			out.println("<div class=\"panel panel-info\">");
+			out.println("<div class=\"panel-heading\">");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-2\">");
+			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+			out.println("<span class=\"glyphicon glyphicon-triangle-left\" aria-hidden=\"true\"></span>");
+			out.println("</button>");
+			out.println("</div>");
+			out.println("<div class=\"col-lg-7\"><h4>Nom</h4></div>");
+			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
+			out.println("<div class=\"col-lg-2\">");	
+			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
+			out.println("</button>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("<div class=\"panel\">");
+			out.println("<div>sfbkjgh rgkergjepr erng;rgdjgkfjhdoifofpof posrjgpodfgpdofigpfdfgfpg pfgjdpfjgrijgdjmrfhod</div>");
+			out.println("</div>");
+			out.println("<div>");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			//Fin D'UNE TACHE
+			// UNE TACHE
+			out.println("<!--UNE TACHE -->");
+			out.println("<div class=\"panel panel-success\">");
+			out.println("<div class=\"panel-heading\">");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-2\">");
+			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+			out.println("<span class=\"glyphicon glyphicon-triangle-left\" aria-hidden=\"true\"></span>");
+			out.println("</button>");
+			out.println("</div>");
+			out.println("<div class=\"col-lg-7\"><h4>Nom</h4></div>");
+			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
+			out.println("<div class=\"col-lg-2\">");	
+			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
+			out.println("</button>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("<div class=\"panel\">");
+			out.println("<div>sfbkjgh rgkergjepr erng;rgdjgkfjhdoifofpof posrjgpodfgpdofigpfdfgfpg pfgjdpfjgrijgdjmrfhod</div>");
+			out.println("</div>");
+			out.println("<div>");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			//Fin D'UNE TACHE
+			// UNE TACHE
+			out.println("<!--UNE TACHE -->");
+			out.println("<div class=\"panel panel-warning\">");
+			out.println("<div class=\"panel-heading\">");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-2\">");
+			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+			out.println("<span class=\"glyphicon glyphicon-triangle-left\" aria-hidden=\"true\"></span>");
+			out.println("</button>");
+			out.println("</div>");
+			out.println("<div class=\"col-lg-7\"><h4>Nom</h4></div>");
+			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
+			out.println("<div class=\"col-lg-2\">");	
+			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
+			out.println("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
+			out.println("</button>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("<div class=\"panel\">");
+			out.println("<div>sfbkjgh rgkergjepr erng;rgdjgkfjhdoifofpof posrjgpodfgpdofigpfdfgfpg pfgjdpfjgrijgdjmrfhod</div>");
+			out.println("</div>");
+			out.println("<div>");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-3\">contributor:</div>");
+			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			//Fin D'UNE TACHE
 			// TACHE
+			/*
 			List<rest.Project> projects = md.getProjects((String)(session.getAttribute("pseudo")));
 			List<Task> tasks = projects.get(0).getTasks();
 			for(int i=0;i<tasks.size();i++){
@@ -138,8 +229,8 @@ public class WorkPanel extends HttpServlet{
 					out.println("<div class=\"panel panel-info\">");
 					out.println("<div class=\"panel-heading\">");
 					out.println("<div class=\"row\">");
-					out.println("<div class=\"col-lg-9\"><h4>"+tasks.get(i).getTitle()+"</h4></div>");
-					out.println("<div class=\"col-lg-1\"><h4>"+tasks.get(i).getValue()+"</h4></div>");
+					out.println("<div class=\"col-lg-9\"><h4>Task\'s name:</h4></div>");
+					out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
 					out.println("<div class=\"col-lg-2\">");	
 
 					out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
@@ -149,7 +240,7 @@ public class WorkPanel extends HttpServlet{
 					out.println("</div>");
 					out.println("</div>");
 					out.println("<div class=\"panel\">");
-					out.println("<div>"+tasks.get(i).getDescription()+"</div>");
+					out.println("<div>Description</div>");
 					out.println("</div>");
 					out.println("<div>");
 					out.println("<div class=\"row\">");
@@ -158,7 +249,7 @@ public class WorkPanel extends HttpServlet{
 					/*List<Member> tasksMember = tasks.getMembers();
 					for (int j = 0; j < tasksMember.length; j++) {
 						tasksMember.get(i).getPseudo() ;
-					}*/
+					}
 					out.println("</div>");
 					out.println("</div>");
 					out.println("</div>");
@@ -173,7 +264,7 @@ public class WorkPanel extends HttpServlet{
 
 
 				}
-			}
+			}*/
 
 
 			//DOING
