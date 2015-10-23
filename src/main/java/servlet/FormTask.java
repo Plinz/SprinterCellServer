@@ -86,20 +86,24 @@ public class FormTask extends HttpServlet{
 			out.println("<br>");
 			out.println("<div class=\"col-lg-2 col-lg-offset-5\">");
 			out.println("<form action=\"/servlet/CreateTask\" method=\"post\">");
+			out.println("<p>Name & weight:</p>");
 			out.println("<input type=\"text\" width=\"150px\" name=\"TaskName\" required>");
 			out.println("<input type=\"number\" name=\"weight\" max=\"13\" min=\"0\" required>");
-			out.println("<p><br/></p>");
+			out.println("<p>Description:</p>");
 			out.println("<textarea cols=\"26\" maxlength=\"100\" value=\"description(facultative)\"></textarea>");
 			out.println("<p><br/></p>");
-			out.println("<div class=\"dropdown\">");
-			out.println("<button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">Dropdown");
-			out.println("<span class=\"caret\"></span>");
-			out.println("</button>");
-			out.println("<ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">");
-			out.println("<li><p id>Action</a></li>");
-			out.println("</ul>");
+			out.println("<div class=\"row\">");
+			out.println("<div class=\"col-lg-6\"><p>Task's Color :</p></div>");
+			out.println("<div class=\"col-lg-6\"><FORM>");
+			out.println("<SELECT name=\"color\" size=\"1\">");
+			out.println("<OPTION>Orange");
+			out.println("<OPTION>Red");
+			out.println("<OPTION>Blue");
+			out.println("<OPTION>Green");
+			out.println("<OPTION>Dark Blue");
+			out.println("</SELECT>");
+			out.println("</FORM></div>");
 			out.println("</div>");
-
 			
 			
 			out.println("<input type=\"submit\" class=\"btn-primary\" value=\"Validation\">");
