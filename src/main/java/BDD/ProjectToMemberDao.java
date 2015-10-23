@@ -9,7 +9,7 @@ public interface ProjectToMemberDao {
 	@SqlUpdate("create table projectmembers (idp integer, pseudo varchar(50))")
 	public void createProjectMember();
 	
-	@SqlUpdate("insert into projectmembers (idp, pseudo)")
+	@SqlUpdate("insert into projectmembers (idp, pseudo) values(:idp, :pseudo)")
 	@GetGeneratedKeys
 	public int insert(@Bind("idp") int idp, @Bind("pseudo") String pseudo);
 	
