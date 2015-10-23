@@ -19,9 +19,9 @@ public interface ProjectDAO {
 	@SqlUpdate("create table projects (idp integer primary key autoincrement, namep varchar(20), descriptionp varchar(100), tasksp text, membersp text)")
 	public void createProjectTable();
 	
-	@SqlUpdate("insert into project (namep, descriptionp, tasksp, membersp)")
+	@SqlUpdate("insert into projects(namep, descriptionp, tasksp, membersp) values(:namep, :descriptionp, :tasksp, :membersp)")
 	@GetGeneratedKeys
-	public int insert(@BindBean Project p);
+	public int insert(@Bind("namep") String namep, @Bind("descriptionp") String descriptionp, @Bind("tasksp") String tasks, @Bind("membersp") String membersp);
 	
 	@SqlUpdate("update projects set namep = :namep, descriptionp = :descriptionp, tasksp = :tasksp, membersp = :membersp")
 	public void update(@BindBean Project p);
@@ -43,6 +43,10 @@ public interface ProjectDAO {
 	
 	@SqlUpdate("delete from projects where idp = :idp")
 	public int deleteProject(@Bind("idp") int idp);
+	
+	@SqlQuery("select * from projects")
+	@RegisterMapperFactory(BeanMapperFactory.class)
+	List<Project> all();
 	
 	@SqlUpdate("drop table if exists projects")
 	public void dropProject();

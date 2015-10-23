@@ -38,9 +38,11 @@ public class ProjectDBRessource {
 	
 	@POST
 	@Path("/{pseudo}")
-	public Project createProject(@PathParam("pseudo") String pseudo, Project project) {
+	public rest.Project createProject(@PathParam("pseudo") String pseudo, Project project) {
+		System.out.println("S1");
 		project.addMember(this.daoMember.findByPseudo(pseudo));
-		this.daoProject.insert(project);
+		this.daoProject.insert(project.getName(), project.getDescription(), project.getTasks().toString(), project.getMembers().toString() );
+		System.out.println("S3");
 		return project;
 	}
 	
@@ -56,7 +58,7 @@ public class ProjectDBRessource {
     @Path("{id}")
 	public Response updateProject(@PathParam("id") int id, 
 			Project project) {
-		Project update = this.daoProject.findProjectByIdp(id);
+		Project update = daoProject.findProjectByIdp(id);
 		if (update == null) {
 			throw new WebApplicationException(404);
 		}
@@ -67,16 +69,18 @@ public class ProjectDBRessource {
 	@GET
 	@Path("/{id}")
 	public Project getProject(@PathParam("id") int id ) {
-		Project p = this.daoProject.findProjectByIdp(id);
+		Project p =daoProject.findProjectByIdp(id);
+		
 		if (p == null) {
 			throw new WebApplicationException(404);
 		}
+		System.out.println(daoProject.all().get(0).getName());
 		return p;
 	}
 	
 	@GET
 	public List<Project> getProjects(@PathParam("pseudo") String pseudo) {
-		return this.daoMember.getProjects(pseudo);
+		return daoMember.getProjects(pseudo);
 	}
 
 }
