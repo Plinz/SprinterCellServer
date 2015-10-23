@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import rest.Member;
+import rest.Project;
 import rest.Task;
 import BDD.App;
 import BDD.MemberDAO;
@@ -29,6 +30,7 @@ public class WorkPanel extends HttpServlet{
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
+
 
 		TaskDao dt = App.getDbi().open(TaskDao.class);
 		MemberDAO md = App.getDbi().open(MemberDAO.class);
@@ -71,6 +73,18 @@ public class WorkPanel extends HttpServlet{
 			out.println("<li class=\"dropdown\">");
 			out.println("<a href=\"#\" class=\"dropdown-toggle navbar-brand\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">My projects<span class=\"caret\"></span></a>");
 			out.println("<ul class=\"dropdown-menu\">");
+			try{
+				List<Project> listProject = md.getProjects((String) session.getAttribute("pseudo"));
+
+				for (int j = 0; j < listProject.size(); j++) {
+
+					listProject.get(j).getName() ;
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+				res.sendRedirect("/servlet/FormProject");
+			}
 			out.println("<li><a href=\"#\">Project 1</a></li>");
 			out.println("<li><a href=\"#\">Project 2</a></li>");
 			out.println("<li><a href=\"#\">Project 3</a></li>");
@@ -115,7 +129,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"thumbnail\">");
 
 			// TACHE
-			ArrayList<rest.Project> projects = md.getProjects((String)(session.getAttribute("pseudo")));
+			List<rest.Project> projects = md.getProjects((String)(session.getAttribute("pseudo")));
 			List<Task> tasks = projects.get(0).getTasks();
 			for(int i=0;i<tasks.size();i++){
 				if(tasks.get(i).getState().equals("TO DO")){
@@ -126,11 +140,11 @@ public class WorkPanel extends HttpServlet{
 					out.println("<div class=\"col-lg-9\"><h4>"+tasks.get(i).getTitle()+"</h4></div>");
 					out.println("<div class=\"col-lg-1\"><h4>"+tasks.get(i).getValue()+"</h4></div>");
 					out.println("<div class=\"col-lg-2\">");	
-					
+
 					out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
 					out.println("<a href=\"/servlet/ModifState\"><span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
 					out.println("</button>");
-					
+
 					out.println("</div>");
 					out.println("</div>");
 					out.println("<div class=\"panel\">");
@@ -151,12 +165,12 @@ public class WorkPanel extends HttpServlet{
 					out.println("</div>");
 				}
 				if(tasks.get(i).getState().equals("DOING")){
-					
-					
+
+
 				}
 				if(tasks.get(i).getState().equals("DONE")){
-					
-					
+
+
 				}
 			}
 

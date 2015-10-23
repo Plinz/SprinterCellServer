@@ -48,7 +48,7 @@ public class CreateProject extends HttpServlet
 			out.println(e.getMessage());
 		}
 		rest.Project p = new rest.Project(nameProject,null);
-		pdao.insert(p);
+		pdao.insert(p.getName(), p.getDescription(), p.getTasks().toString(), p.getMembers().toString());
 		res.sendRedirect("/servlet/WorkPanel");
 
 	}

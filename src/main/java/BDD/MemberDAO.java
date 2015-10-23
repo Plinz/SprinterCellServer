@@ -39,7 +39,7 @@ public interface MemberDAO {
 	
 	@SqlQuery("select * from projects, projectmembers  where pseudo = :pseudo and projects.idp = projectmembers.idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	public ArrayList<rest.Project> getProjects(@Bind("idm") String pseudo);
+	public List<rest.Project> getProjects(@Bind("idm") String pseudo);
 	
 	@SqlUpdate("delete from members where pseudo = :pseudo")
 	public int deleteMember(@Bind("pseudo") String pseudo);
