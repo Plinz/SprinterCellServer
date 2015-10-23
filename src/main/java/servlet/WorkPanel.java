@@ -76,9 +76,9 @@ public class WorkPanel extends HttpServlet{
 			out.println("<li><a href=\"#\">Project 3</a></li>");
 			out.println("</ul>");
 			out.println("</li>");
-			out.println("<li><a href=\"#\">New Project</a></li>");
-			out.println("<li><a href=\"#\">Add Tache</a></li>");
-			out.println("<li><a href=\"#\">Add Collaborateur</a></li>");
+			out.println("<li><a href=\"/servlet/FormProject\">New Project</a></li>");
+			out.println("<li><a href=\"/servlet/FormTask\">Add Task</a></li>");
+			out.println("<li><a href=\"#\">Add contributor</a></li>");
 			out.println("</ul>");
 			out.println("</div>");
 
@@ -138,12 +138,12 @@ public class WorkPanel extends HttpServlet{
 					out.println("</div>");
 					out.println("<div>");
 					out.println("<div class=\"row\">");
-					out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
+					out.println("<div class=\"col-lg-3\">contributor:</div>");
 					out.println("<div class=\"col-lg-9\">");
-					List<Member> tasksMember = tasks.getMembers();
+					/*List<Member> tasksMember = tasks.getMembers();
 					for (int j = 0; j < tasksMember.length; j++) {
 						tasksMember.get(i).getPseudo() ;
-					}
+					}*/
 					out.println("</div>");
 					out.println("</div>");
 					out.println("</div>");
@@ -189,7 +189,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
+			out.println("<div class=\"col-lg-3\">contributor:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
@@ -219,7 +219,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
+			out.println("<div class=\"col-lg-3\">contributor:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
@@ -253,7 +253,7 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("<div>");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-3\">Collaborateur:</div>");
+			out.println("<div class=\"col-lg-3\">contributor:</div>");
 			out.println("<div class=\"col-lg-9\">regdfoi, godfigodfi, ugoidfugo, idfugo</div>");
 			out.println("</div>");
 			out.println("</div>");
