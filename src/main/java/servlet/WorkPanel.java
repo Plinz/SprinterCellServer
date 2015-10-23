@@ -2,12 +2,28 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.print.attribute.standard.PDLOverrideSupported;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.eclipse.jetty.server.session.JDBCSessionManager.Session;
+import org.eclipse.persistence.sessions.Project;
+
+import rest.Task;
+
+import BDD.App;
+import BDD.MemberDAO;
+import BDD.ProjectToMemberDao;
+import BDD.ProjectToTaskDao;
+import BDD.TaskDao;
 
 
 @WebServlet("servlet/WorkPanel")
@@ -18,6 +34,24 @@ public class WorkPanel extends HttpServlet{
 	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html");
+		
+		TaskDao dt = App.getDbi().open(TaskDao.class);
+		MemberDAO md = App.getDbi().open(MemberDAO.class);
+		ProjectToTaskDao pttd = App.getDbi().open(ProjectToTaskDao.class);
+		ProjectToMemberDao ptmd = App.getDbi().open(ProjectToMemberDao.class);
+		HttpSession session = req.getSession(true);
+		try {
+			md.createMemberTable();
+		} catch (Exception e) {}
+		try {
+			dt.createTaskTable();
+		} catch (Exception e) {}
+		try {
+			pttd.createProjectTask();
+		} catch (Exception e) {}
+		try {
+			ptmd.createProjectMember();
+		} catch (Exception e) {}
 
 		try{
 
@@ -39,13 +73,16 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"navbar-header\">");
 			out.println("<ul class=\"nav navbar-nav\">");
 			out.println("<li class=\"dropdown\">");
-			out.println("<a href=\"#\" class=\"dropdown-toggle navbar-brand\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Mes projets<span class=\"caret\"></span></a>");
+			out.println("<a href=\"#\" class=\"dropdown-toggle navbar-brand\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">My projects<span class=\"caret\"></span></a>");
 			out.println("<ul class=\"dropdown-menu\">");
-			out.println("<li><a href=\"#\">Projet 1</a></li>");
-			out.println("<li><a href=\"#\">Projet 2</a></li>");
-			out.println("<li><a href=\"#\">Projet 3</a></li>");
+			out.println("<li><a href=\"#\">Project 1</a></li>");
+			out.println("<li><a href=\"#\">Project 2</a></li>");
+			out.println("<li><a href=\"#\">Project 3</a></li>");
 			out.println("</ul>");
 			out.println("</li>");
+			out.println("<li><a href=\"#\">New Project</a></li>");
+			out.println("<li><a href=\"#\">Add Tache</a></li>");
+			out.println("<li><a href=\"#\">Add Collaborateur</a></li>");
 			out.println("</ul>");
 			out.println("</div>");
 
@@ -80,12 +117,18 @@ public class WorkPanel extends HttpServlet{
 			out.println("<div class=\"col-sm-6 col-md-4\">");
 			out.println("<h2 style=\"text-align:center\"><span class=\" label label-primary\">TO DO</h2>");
 			out.println("<div class=\"thumbnail\">");
+			
 			// UNE TACHE
+			ArrayList<rest.Project> projects = md.getProjects((String)(session.getAttribute("pseudo")));
+			List<Task> tasks = projects.get(0).getTasks();
+			
+			for(int i=0;i<tasks.size();i++){
+			
 			out.println("<!--UNE TACHE -->");
 			out.println("<div class=\"panel panel-info\">");
 			out.println("<div class=\"panel-heading\">");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-lg-9\"><h4>Nom</h4></div>");
+			out.println("<div class=\"col-lg-9\"><h4>"+""+"</h4></div>");
 			out.println("<div class=\"col-lg-1\"><h4>13</h4></div>");
 			out.println("<div class=\"col-lg-2\">");	
 			out.println("<button type=\"button\" class=\"btn btn-default\" aria-label=\"Left Align\">");
@@ -104,6 +147,9 @@ public class WorkPanel extends HttpServlet{
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
+			
+			}
+			
 			//FIN D'UNE TACHE
 			// UNE TACHE
 			out.println("<!--UNE TACHE -->");

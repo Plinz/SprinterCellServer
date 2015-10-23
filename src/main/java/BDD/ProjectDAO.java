@@ -12,6 +12,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 import rest.Member;
 import rest.Project;
+import rest.Task;
 
 public interface ProjectDAO {
 
@@ -34,7 +35,7 @@ public interface ProjectDAO {
 	
 	@SqlQuery("select * from tasks, projecttasks where tasks.idt = projecttasks.idt and projecttasks.idp = :idp")
     @RegisterMapperFactory(BeanMapperFactory.class)
-	public List<Member> findTasksByIdp(@Bind("idp") int idp);
+	public List<Task> findTasksByIdp(@Bind("idp") int idp);
 	
 	@SqlQuery("select * from projects where idp = :idp")
     @RegisterMapperFactory(BeanMapperFactory.class)

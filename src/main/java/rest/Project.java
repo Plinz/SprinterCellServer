@@ -66,7 +66,7 @@ public class Project {
 	}
 
 
-	public List<Member> getTasks() {
+	public List<Task> getTasks() {
 		return this.daoProject.findTasksByIdp(this.id);
 	}
 
